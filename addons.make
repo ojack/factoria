@@ -1,0 +1,10 @@
+ofxCv
+ofxGui
+ofxKinect
+ofxKinectProjectorToolkit
+ofxKinectV2-OSC
+ofxMidi
+ofxOpenCv
+ofxOsc
+ofxSecondWindow
+ofxSyphon
