@@ -16,8 +16,12 @@
 // projector resolution
 #define PROJECTOR_RESOLUTION_X 1280
 #define PROJECTOR_RESOLUTION_Y 720
+
+//kinect image resolution
 #define KINECT_WIDTH 512
 #define KINECT_HEIGHT 424
+
+//distance range to detect kinect
 #define KINECT_MIN_DIST 500
 #define KINECT_MAX_DIST 8000
 

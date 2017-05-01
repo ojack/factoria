@@ -22,6 +22,7 @@ void skeletonScene::setup(){
     params.add(showDebug.set("show debug", false));
     params.add(showSkeletons.set("show skeletons", true));
     params.add(soundEnabled.set("SOUND ENABLED", true));
+    params.add(bUseProjection.set("use projection", false));
     //kinect osc
     ofTrueTypeFont smallFont, largeFont;
     smallFont.loadFont("selena.otf", 16); //http://openfontlibrary.org/en/font/selena
@@ -370,11 +371,19 @@ pair<pair<string, string>, ofImage> skeletonScene::createImageReference(string s
 
 
 ofVec2f skeletonScene::getProjectorFromCameraPoint(ofVec3f cameraPoint) {
-    cv::Mat cameraMat = (cv::Mat1d(1, 4) << cameraPoint.x, cameraPoint.y, cameraPoint.z, 1);
-    cv::Mat projectorPoint = cameraMat*projectorWorldView;
-    projectorPoint /= (projectorPoint.at<double>(2));
-    float yPoint = width - (projectorPoint.at<double>(1) + 1)*height / 2;
-    return ofVec2f((projectorPoint.at<double>(0) + 1)*width / 2 + skeletonOffset->x, yPoint+skeletonOffset->y);
+    if(bUseProjection){
+        cv::Mat cameraMat = (cv::Mat1d(1, 4) << cameraPoint.x, cameraPoint.y, cameraPoint.z, 1);
+        cv::Mat projectorPoint = cameraMat*projectorWorldView;
+        projectorPoint /= (projectorPoint.at<double>(2));
+        float yPoint = width - (projectorPoint.at<double>(1) + 1)*height / 2;
+        return ofVec2f((projectorPoint.at<double>(0) + 1)*width / 2 + skeletonOffset->x, yPoint+skeletonOffset->y);
+    } else {
+        ofVec2f point;
+        point.x = ofMap(cameraPoint.x, -1, 1, 0, ofGetWidth());
+        point.y = ofMap(cameraPoint.y, -1, 1, ofGetHeight(), 0);
+        
+        return point;
+    }
 }
 
 void skeletonScene::setupProjector() {

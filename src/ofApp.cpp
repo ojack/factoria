@@ -38,7 +38,7 @@ void ofApp::setup() {
 }
 
 void ofApp::setupProjection(){
-    
+    // ofToggleFullscreen();
 }
 
 
@@ -51,6 +51,8 @@ void ofApp::update() {
 void ofApp::drawProjection(ofEventArgs & args){
     if(bSetFullScreen){
         ofSetFullscreen(true);
+    } else {
+        ofSetFullscreen(false);
     }
    
     ofClear(0, 0, 0, 0);
@@ -86,7 +88,9 @@ void ofApp::keyPressed(int key) {
     } else if(key==' '){
         bShowDebug = !bShowDebug;
     } else if(key=='f'){
-        bSetFullScreen = true;
+        
+        bSetFullScreen = !bSetFullScreen;
+        ofLog()<< bSetFullScreen;
     } else if (key == OF_KEY_UP){
         angle++;
         if(angle>30) angle=30;

@@ -35,7 +35,7 @@ public:
     ofParameter<ofVec2f> skeletonOffset, limbScale;
     ofParameter<float> hipWiden;
     ofParameter<float>opacity;
-    ofParameter<bool> showDebug, showSkeletons, soundEnabled;
+    ofParameter<bool> showDebug, showSkeletons, soundEnabled, bUseProjection;
     ofParameter<bool>changeFrequency;
     
     ofxKinectV2OSC oscKinect;

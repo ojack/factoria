@@ -11,10 +11,14 @@ int main( ){
     settings.windowMode = OF_WINDOW;
     shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
     
-    
-    settings.width = 1280;
+    //Init projection screen
+   
+    settings.setPosition(ofVec2f(1400, 0));
     settings.height = 720;
+    settings.width = 1280;
     settings.shareContextWith = mainWindow;
+    //settings.multiMonitorFullScreen = true;
+    //settings.windowMode = OF_FULLSCREEN;
     shared_ptr<ofAppBaseWindow> projectionWindow = ofCreateWindow(settings);
     projectionWindow->setVerticalSync(false);
     
