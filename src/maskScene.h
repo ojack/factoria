@@ -7,6 +7,7 @@
 class maskScene : public baseScene{
     
 public:
+    using baseScene::baseScene;
     
     void setup();
     void update();

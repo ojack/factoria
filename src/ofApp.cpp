@@ -22,19 +22,23 @@ void ofApp::setup() {
     outputRect = ofRectangle(0, 0, PROJECTOR_RESOLUTION_X, PROJECTOR_RESOLUTION_Y);
     gui.setup("parameters");
     
-    SM.scenes.push_back(new maskScene());
-    SM.scenes.push_back(new skeletonScene());
-    SM.scenes.push_back(new globosScene());
+    SM.scenes.push_back(new maskScene("mascara.xml"));
+    SM.scenes.push_back(new skeletonScene("skeleton.xml"));
+    SM.scenes.push_back(new globosScene("globos.xml"));
     
     for (int i = 0; i < SM.scenes.size(); i++){
         SM.scenes[i]->width = PROJECTOR_RESOLUTION_X;
         SM.scenes[i]->height = PROJECTOR_RESOLUTION_Y;
         SM.scenes[i]->kinectV1 = &kinectV1;
     }
-    SM.setup();
-    for (int i = 0; i < SM.scenes.size(); i++){
+    SM.gui = &gui;
+  
+    
+    /*for (int i = 0; i < SM.scenes.size(); i++){
         gui.add(SM.scenes[i]->params);
-    }
+    }*/
+    
+      SM.setup();
 }
 
 void ofApp::setupProjection(){
@@ -77,12 +81,13 @@ void ofApp::keyPressed(int key) {
     if(key == OF_KEY_LEFT)  {
        
     } else if(key == OF_KEY_RIGHT)  {
-       gui.loadFromFile(files[settingsIndex]);
+      // gui.loadFromFile(files[settingsIndex]);
         SM.nextScene();
         SM.clear();
         
     }  else if (key == 's'){
-        gui.saveToFile(files[settingsIndex]);
+       // gui.saveToFile(files[settingsIndex]);
+        SM.saveCurrentSettings();
     } else if(key=='k'){
         kinectGui.saveToFile("kinect.xml");
     } else if(key==' '){

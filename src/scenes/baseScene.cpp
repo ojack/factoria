@@ -7,3 +7,7 @@
 //
 
 #include "baseScene.h"
+
+baseScene::baseScene(string settings){
+    settingsFile = settings;
+}

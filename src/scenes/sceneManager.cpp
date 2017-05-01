@@ -6,6 +6,7 @@ void sceneManager::setup(){
     // traditional for loop
     for (int i = 0; i < scenes.size(); i++){
         scenes[i]->setup();
+        gui->add(scenes[i]->params);
     }
     
     // range based for loop
@@ -14,12 +15,15 @@ void sceneManager::setup(){
     //    }
     //
     currentScene = 0;
-    
+    ofLog() << "loading: "<< scenes[currentScene]->settingsFile;
+    gui->loadFromFile(scenes[currentScene]->settingsFile);
 }
 
 void sceneManager::nextScene(){
     currentScene++;
     currentScene %= scenes.size();
+    ofLog() << "loading: "<< scenes[currentScene]->settingsFile;
+    gui->loadFromFile(scenes[currentScene]->settingsFile);
 }
 
 void sceneManager::randomScene(){
@@ -36,8 +40,10 @@ void sceneManager::update(){
     scenes[currentScene]->update();
     
 }
-
-
+void sceneManager::saveCurrentSettings(){
+    ofLog() << "saving: "<< scenes[currentScene]->settingsFile;
+    gui->saveToFile(scenes[currentScene]->settingsFile);
+}
 //---------------------------------------------------------------
 void sceneManager::draw(){
     ofPushStyle();

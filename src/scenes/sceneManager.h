@@ -14,8 +14,10 @@ public:
     void nextScene();
     void clear();
     void randomScene();
+    void saveCurrentSettings();
     
     vector < baseScene * > scenes;
     int currentScene;
     
+    ofxPanel      * gui;
 };

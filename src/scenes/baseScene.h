@@ -7,6 +7,7 @@
 class baseScene {
     
 public:
+    baseScene(string settings);
     
     virtual void setup(){};
     virtual void update(){};
@@ -19,4 +20,6 @@ public:
     
     ofParameterGroup params;
     ofFbo renderFbo;
+    
+    string settingsFile;
 };
