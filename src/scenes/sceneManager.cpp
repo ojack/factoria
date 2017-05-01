@@ -6,7 +6,12 @@ void sceneManager::setup(){
     // traditional for loop
     for (int i = 0; i < scenes.size(); i++){
         scenes[i]->setup();
-        gui->add(scenes[i]->params);
+        
+        ofxGuiGroup * panel = new ofxGuiGroup(scenes[i]->params);
+       // panel->parent = &gui;
+        panel->setHeaderBackgroundColor(ofColor(0, 100, 100));
+        gui->add(panel);
+        //gui->add(scenes[i]->params);
     }
     
     // range based for loop

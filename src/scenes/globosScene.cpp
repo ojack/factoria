@@ -87,19 +87,26 @@ void globosScene::draw(){
     vector<ofPolyline> contours = kinectV1->getProjectedContours();
     ofSort(contours, comparePosition);
     
-    for(int i = 0; i < contours.size(); i++) {
-        if(i < 3){
-            ofPoint center = contours.at(i).getCentroid2D();
-            ofRectangle boundingBox = contours.at(i).getBoundingBox();
-            float width = boundingBox.width*videoScale->x;
-            float height = boundingBox.height*videoScale->y;
-            if(i==1){
-                crossfadeFbo.draw(center.x-width/2, center.y-height/2, width, height);
-            } else {
-                globos[i].draw(center.x-width/2, center.y-height/2, width, height);
+    if(contours.size() ==1){
+        ofPoint center = contours.at(0).getCentroid2D();
+        ofRectangle boundingBox = contours.at(0).getBoundingBox();
+        float width = boundingBox.width*videoScale->x;
+        float height = boundingBox.height*videoScale->y;
+        crossfadeFbo.draw(center.x-width/2, center.y-height/2, width, height);
+    } else {
+        for(int i = 0; i < contours.size(); i++) {
+            if(i < 3){
+                ofPoint center = contours.at(i).getCentroid2D();
+                ofRectangle boundingBox = contours.at(i).getBoundingBox();
+                float width = boundingBox.width*videoScale->x;
+                float height = boundingBox.height*videoScale->y;
+                /*if(i==1){
+                    crossfadeFbo.draw(center.x-width/2, center.y-height/2, width, height);
+                } else {*/
+                    globos[i].draw(center.x-width/2, center.y-height/2, width, height);
+               // }
             }
         }
     }
-    
 
 }

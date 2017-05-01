@@ -33,7 +33,7 @@ void ofApp::setup() {
     }
     SM.gui = &gui;
   
-    
+    gui.setHeaderBackgroundColor(ofColor(100, 0, 0));
     /*for (int i = 0; i < SM.scenes.size(); i++){
         gui.add(SM.scenes[i]->params);
     }*/
