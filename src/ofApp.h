@@ -55,10 +55,6 @@ public:
     ofParameter<float>                      maquinaOpacity;
     ofParameter<bool>                       useVideo, useProjector, drawGlobos;
     
-    ofxSyphonServer                         mascaraSyphon;
-    ofxSyphonServer                         globosSyphon;
-    ofxSyphonServer                         skeletonSyphon;
-    
     ofFbo renderFbo;
     ofFbo skeletonFbo;
     ofFbo mascaraFbo;
