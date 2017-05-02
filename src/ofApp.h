@@ -23,7 +23,7 @@
 
 //distance range to detect kinect
 #define KINECT_MIN_DIST 500
-#define KINECT_MAX_DIST 8000
+#define KINECT_MAX_DIST 7000
 
 using namespace ofxCv;
 using namespace cv;

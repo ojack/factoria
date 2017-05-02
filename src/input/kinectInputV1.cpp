@@ -92,6 +92,39 @@ void kinectInputV1::update(){
     #endif
 }
 
+ofVec3f kinectInputV1::getClosestPoint(){
+    int img_width;
+    int img_height;
+    ofRectangle bounds = contourFinder.getPolyline(0).getBoundingBox();
+    #ifdef USE_VIDEO
+        img_width = 512;
+        img_height = 424;
+    #else
+        img_width = kinect.width;
+        img_height = kinect.height;
+    #endif
+    
+    int closestPoint = 0;
+    ofVec2f position = ofVec2f(0, 0);
+    ofLog() << "bounds" << bounds.getMinX();
+    for (int i = bounds.getMinX(); i < bounds.getMaxX(); i++){
+        for(int j = bounds.getMinY(); j < bounds.getMaxY(); j++){
+         //img_width*img_height; i++){
+            if( graypixels[j*img_width + i] >= closestPoint){
+                closestPoint = graypixels[j*img_width + i];
+                position = ofVec2f(i, j);
+            }
+        }
+    }
+    #ifdef USE_VIDEO
+        return ofVec3f(position.x, position.y, closestPoint);
+     #else
+        ofVec3f worldPoint = kinect.getWorldCoordinateAt(position.x, position.y);
+        ofVec2f projectedPoint = kpt.getProjectedPoint(worldPoint);
+        return ofVec3f(projectedPoint.x*width, projectedPoint.y*height, closestPoint);
+     #endif
+}
+
 void kinectInputV1::setAngle(int angle){
 #ifndef USE_VIDEO
     kinect.setCameraTiltAngle(angle);
@@ -147,9 +180,9 @@ void kinectInputV1::draw(){
 #else
     //kinect.draw(0, 0);
     texDepth.draw(0,0);
-    filteredDepthImage.draw(512,0);
+   // filteredDepthImage.draw(512,0);
 #endif
-    ofTranslate(512, 0);
-    contourFinder.draw();
+  //  ofTranslate(512, 0);
+   // contourFinder.draw();
     ofPopMatrix();
 }

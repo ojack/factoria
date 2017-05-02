@@ -84,6 +84,7 @@ void globosScene::update(){
 }
 
 void globosScene::draw(){
+   
     vector<ofPolyline> contours = kinectV1->getProjectedContours();
     ofSort(contours, comparePosition);
     
@@ -93,6 +94,14 @@ void globosScene::draw(){
         float width = boundingBox.width*videoScale->x;
         float height = boundingBox.height*videoScale->y;
         crossfadeFbo.draw(center.x-width/2, center.y-height/2, width, height);
+        
+        ofVec3f closest = kinectV1->getClosestPoint();
+        ofPushMatrix();
+        ofSetColor(255, 0, 0);
+        ofDrawCircle(closest.x,closest.y, 20);
+        ofLog() << closest;
+        ofPopMatrix();
+        
     } else {
         for(int i = 0; i < contours.size(); i++) {
             if(i < 3){
@@ -108,5 +117,8 @@ void globosScene::draw(){
             }
         }
     }
+    
+   
+    
 
 }

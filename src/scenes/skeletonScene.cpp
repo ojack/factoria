@@ -54,7 +54,7 @@ void skeletonScene::setup(){
 
 
 
-    if (XML.loadFile(ofToDataPath("kinectv2/calibrationalzate2.xml"))) {
+    if (XML.loadFile(ofToDataPath("kinectv2/factoria.xml"))) {
         ofLogNotice() << "loaded!";
         setupProjector();
     }
@@ -62,7 +62,7 @@ void skeletonScene::setup(){
         ofLogError() << "unable to load";
     }
     
- /*   torsoMesh.setMode(OF_PRIMITIVE_TRIANGLE_FAN);
+ /*  torsoMesh.setMode(OF_PRIMITIVE_TRIANGLE_FAN);
     torsoMesh.addTexCoord(ofVec2f(torso.getWidth()/2, torso.getHeight()/2));
     torsoMesh.addTexCoord(ofVec2f(0, 0));
     torsoMesh.addTexCoord(ofVec2f(torso.getWidth(), 0));
@@ -70,6 +70,15 @@ void skeletonScene::setup(){
     torsoMesh.addTexCoord(ofVec2f(0, torso.getHeight()));
     torsoMesh.addTexCoord(ofVec2f(0, 0));*/
     
+    
+    torsoMesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+  //  torsoMesh.addTexCoord(ofVec2f(torso.getWidth()/2, torso.getHeight()/2));
+    torsoMesh.addTexCoord(ofVec2f(0, 0));
+    torsoMesh.addTexCoord(ofVec2f(torso.getWidth(), 0));
+    torsoMesh.addTexCoord(ofVec2f(0, torso.getHeight()));
+    torsoMesh.addTexCoord(ofVec2f(torso.getWidth(), torso.getHeight()));
+    
+    //torsoMesh.addTexCoord(ofVec2f(0, 0));
    
 
 }
@@ -296,7 +305,7 @@ void skeletonScene::drawTorso(ofVec2f p1, ofVec2f p2, ofVec2f p3, ofVec2f p4) {
     pt4 -= diff4*torsoPad->y;
     pt1 += diff4*torsoPad->y;
     
-    torso.getTexture().bind();
+   /* torso.getTexture().bind();
     
     glBegin(GL_POLYGON);
     glTexCoord2f(0.0, 0.0);
@@ -316,20 +325,20 @@ void skeletonScene::drawTorso(ofVec2f p1, ofVec2f p2, ofVec2f p3, ofVec2f p4) {
     
     glEnd();
     
-    torso.getTexture().unbind();
+    torso.getTexture().unbind();*/
     
   /*
     
     torsoMesh.setMode(OF_PRIMITIVE_TRIANGLE_FAN);
-   // torsoMesh.clearTexCoords();
+   // torsoMesh.clearTexCoords();*/
     torsoMesh.clearVertices();
     
-    torsoMesh.addVertex(pt0);
-    torsoMesh.addVertex(pt1);
+    //torsoMesh.addVertex(pt0);
     torsoMesh.addVertex(pt2);
+    torsoMesh.addVertex(pt1);
     torsoMesh.addVertex(pt3);
     torsoMesh.addVertex(pt4);
-    torsoMesh.addVertex(pt1);
+   // torsoMesh.addVertex(pt1);
     
     torso.getTexture().bind();
     torsoMesh.draw();
@@ -373,10 +382,17 @@ pair<pair<string, string>, ofImage> skeletonScene::createImageReference(string s
 ofVec2f skeletonScene::getProjectorFromCameraPoint(ofVec3f cameraPoint) {
     if(bUseProjection){
         cv::Mat cameraMat = (cv::Mat1d(1, 4) << cameraPoint.x, cameraPoint.y, cameraPoint.z, 1);
+        //ofLogVerbose() << "cameraMat: " << cameraMat;
         cv::Mat projectorPoint = cameraMat*projectorWorldView;
+        
+        //ofLogVerbose() << "projector point: " << projectorPoint;
         projectorPoint /= (projectorPoint.at<double>(2));
-        float yPoint = width - (projectorPoint.at<double>(1) + 1)*height / 2;
+        //ofLogVerbose() << projectorPoint;
+        //ofLog() << projectorPoint.at<double>(1);
+        float yPoint = height - (projectorPoint.at<double>(1) + 1)*height / 2;
+        //ofLog() << yPoint;
         return ofVec2f((projectorPoint.at<double>(0) + 1)*width / 2 + skeletonOffset->x, yPoint+skeletonOffset->y);
+
     } else {
         ofVec2f point;
         point.x = ofMap(cameraPoint.x, -1, 1, 0, ofGetWidth());

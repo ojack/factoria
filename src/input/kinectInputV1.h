@@ -23,6 +23,8 @@ public:
     vector <ofPolyline> getProjectedContours();
     vector <ofPolyline> projectedContours;
     
+    ofVec3f getClosestPoint();
+    
     ofParameterGroup params;
     
     ofParameter<float>          nearThreshold;

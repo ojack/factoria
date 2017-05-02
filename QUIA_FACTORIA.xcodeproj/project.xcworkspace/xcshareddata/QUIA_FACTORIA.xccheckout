@@ -32,21 +32,21 @@
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>37526DA425E5430474A14FBFA1BC4525160B5FC1</key>
-		<string>../../../../../addons/ofxCv</string>
+		<string>../../../addons/ofxCv</string>
 		<key>47CE4DB7D37DE73BB7688BDCEF72504CF39E657B</key>
-		<string>../../../../../addons/ofxKinectV2-OSC</string>
+		<string>../../../addons/ofxKinectV2-OSC</string>
 		<key>8B7D3B297962C41A4A67EFE4DB1DBDE53440A0BB</key>
-		<string>../../../../../addons/ofxBlur</string>
+		<string>../../../addons/ofxBlur</string>
 		<key>90E2F969A762FB62C413A0C44D1F334E6EC3F531</key>
-		<string>../../../../../addons/ofxMidi</string>
+		<string>../../../addons/ofxMidi</string>
 		<key>C053D1D579051635C47146864323F9D9CC69EA78</key>
 		<string>../..</string>
 		<key>D9F52E6B50C836A90709491B3A1E16B7BCB9BE5F</key>
-		<string>../../../../../addons/ofxKinectProjectorToolkit</string>
+		<string>../../../addons/ofxKinectProjectorToolkit</string>
 		<key>F4CCB893AFADB97238A965FD2F28717F1CAAE613</key>
-		<string>../../../../../addons/ofxSyphon</string>
+		<string>../../../addons/ofxSyphon</string>
 		<key>FE87873B02C5E6719395DDAC8C0C0C585EF1FA8F</key>
-		<string>../../../../../addons/ofxSecondWindow</string>
+		<string>../../../addons/ofxSecondWindow</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/ojack/factoria.git</string>

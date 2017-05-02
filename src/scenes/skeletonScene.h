@@ -57,6 +57,8 @@ public:
     ofImage torso;
     ofTexture torsoTexture;
     
+    ofMesh torsoMesh;
+    
     vector<pair<pair<string, string>, ofImage>> skeletonMap;
     
     HandState rightHandState;
