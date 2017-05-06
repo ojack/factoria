@@ -1,4 +1,4 @@
-bin/sonidos
-bin/skeleton
-bin/globos
-bin/kinectv1/atwood.mov
+bin/data/sonidos
+bin/data/skeleton
+bin/data/globos
+bin/data/kinectv1/atwood.mov
