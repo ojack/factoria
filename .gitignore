@@ -1,4 +1,7 @@
-bin/data/sonidos
-bin/data/skeleton
-bin/data/globos
+bin/data/sonidos/
+bin/data/skeleton/
+bin/data/globos/
 bin/data/kinectv1/atwood.mov
+bin/QUIA_FACTORIADebug.app
+bin/QUIA_FACTORIARelease.app
+QUIA_FACTORIA.xcodeproj
