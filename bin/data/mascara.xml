@@ -1,0 +1,37 @@
+<parameters>
+	<nearThresh>230</nearThresh>
+	<farThresh>40.8</farThresh>
+	<minArea>1000</minArea>
+	<maxArea>70000</maxArea>
+	<threshold>15</threshold>
+	<persistence>15</persistence>
+	<maxDistance>32</maxDistance>
+	<draw_globos>1</draw_globos>
+	<use_video>1</use_video>
+	<global_offset>0, -14.2857</global_offset>
+	<video_scale>3.40816, 2.46939</video_scale>
+	<maquina_opacity>0</maquina_opacity>
+<parameters/>
+<blurAmount>0.2</blurAmount>
+	<torso_pad>0.27551, 0.1</torso_pad>
+	<skeletonOffset>114.286, -26.5306</skeletonOffset>
+	<limbScale>1.70918, 1</limbScale>
+	<hip_widen>1.275</hip_widen>
+	<show_debug>0</show_debug>
+	<show_skeletons>0</show_skeletons>
+<group/>
+	<skeleton>
+		<torso_pad>0.1, 0.1</torso_pad>
+		<skeletonOffset>-12.4115, 0</skeletonOffset>
+		<limbScale>1, 1</limbScale>
+		<hip_widen>1.2</hip_widen>
+		<show_debug>0</show_debug>
+		<show_skeletons>1</show_skeletons>
+		<SOUND_ENABLED>1</SOUND_ENABLED>
+		<use_projection>0</use_projection>
+	</skeleton>
+	<globos>
+		<maquina_opacity>0.142857</maquina_opacity>
+		<video_scale>1.23032, 1.52187</video_scale>
+	</globos>
+</parameters>
