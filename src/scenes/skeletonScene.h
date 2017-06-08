@@ -4,6 +4,7 @@
 #include "baseScene.h"
 #include "ofxKinectV2OSC.h"
 #include "ofxXmlSettings.h"
+#include "../../SkeletonAsset.h"
 
 //#include "distanceCalibration.h"
 
@@ -22,14 +23,14 @@ public:
     
     //skeleton parameters
     void drawSkeletons();
-    void drawLimb(ofVec2f start, ofVec2f end, ofImage img);
-    void drawHead(ofVec2f head, ofVec2f spine, ofImage img);
+    void drawLimb(ofVec2f start, ofVec2f end, SkeletonAsset img);
+    void drawHead(ofVec2f head, ofVec2f spine, SkeletonAsset img);
     
     void createSkeletonMap();
     ofVec2f depthToProjector(ofVec2f depthPt);
     void drawTorso(ofVec2f topLeft, ofVec2f topRight, ofVec2f bottomRight, ofVec2f bottomLeft);
     Joint getJoint(string type, Skeleton skeleton);
-    pair<pair<string, string>, ofImage> createImageReference(string start, string end, ofImage image);
+    pair<pair<string, string>, SkeletonAsset> createImageReference(string start, string end, SkeletonAsset image);
     
     ofParameterGroup parameters;
     ofParameter<ofVec2f> torsoPad;
@@ -45,21 +46,21 @@ public:
     Skeleton* skeleton;
     vector<Skeleton>* skeletons;
     
-    ofImage rUpperArm;
-    ofImage rForeArm;
-    ofImage lUpperArm;
-    ofImage lForeArm;
-    ofImage lShin;
-    ofImage rShin;
-    ofImage rThigh;
-    ofImage lThigh;
-    ofImage neck;
+    SkeletonAsset rUpperArm;
+    SkeletonAsset rForeArm;
+    SkeletonAsset lUpperArm;
+    SkeletonAsset lForeArm;
+    SkeletonAsset lShin;
+    SkeletonAsset rShin;
+    SkeletonAsset rThigh;
+    SkeletonAsset lThigh;
+    SkeletonAsset neck;
     ofImage torso;
     ofTexture torsoTexture;
     
     ofMesh torsoMesh;
     
-    vector<pair<pair<string, string>, ofImage>> skeletonMap;
+    vector<pair<pair<string, string>, SkeletonAsset>> skeletonMap;
     
     HandState rightHandState;
     HandState leftHandState;

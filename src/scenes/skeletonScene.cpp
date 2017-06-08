@@ -32,16 +32,16 @@ void skeletonScene::setup(){
     
    // renderer.setup(skeletons, smallFont);
     
-    rUpperArm.load("skeleton/right-shoulder.png");
-    rUpperArm.load("skeleton/right-shoulder.png");
-    rForeArm.load("skeleton/right-forearm.png");
-    lUpperArm.load("skeleton/left-shoulder.png");
-    lForeArm.load("skeleton/left-forearm.png");
-    lShin.load("skeleton/left-shin.png");
-    rShin.load("skeleton/right-shin.png");
-    rThigh.load("skeleton/right-thigh.png");
-    lThigh.load("skeleton/left-thigh.png");
-    neck.load("skeleton/neck.png");
+    rUpperArm.load("skeleton/right-shoulder.png",false);
+    rUpperArm.load("skeleton/right-shoulder.png", false);
+    rForeArm.load("skeleton/right-forearm.png", false);
+    lUpperArm.load("skeleton/left-shoulder.png", false);
+    lForeArm.load("skeleton/left-forearm.png", false);
+    lShin.load("skeleton/left-shin.png", false);
+    rShin.load("skeleton/right-shin.png", false);
+    rThigh.load("skeleton/right-thigh.png", false);
+    lThigh.load("skeleton/left-thigh.png", false);
+    neck.load("skeleton/neck.png", false);
     torso.load("skeleton/body-gears-connected.png");
     
     
@@ -232,7 +232,7 @@ Joint skeletonScene::getJoint(string jointType, Skeleton skeleton){
 
 
 
-void skeletonScene::drawHead(ofVec2f start, ofVec2f end, ofImage img) {
+void skeletonScene::drawHead(ofVec2f start, ofVec2f end, SkeletonAsset img) {
     //ofDrawLine(start, end);
     ofSetColor(255, 255, 255);
     ofVec2f c = ofVec2f(end.x - start.x, end.y - start.y);
@@ -257,7 +257,7 @@ void skeletonScene::drawHead(ofVec2f start, ofVec2f end, ofImage img) {
     
 }
 
-void skeletonScene::drawLimb(ofVec2f start, ofVec2f end, ofImage img) {
+void skeletonScene::drawLimb(ofVec2f start, ofVec2f end, SkeletonAsset img) {
     //ofDrawLine(start, end);
     //img.draw(start.x, start.y);
     ofSetColor(255, 255, 255);
@@ -373,7 +373,7 @@ void skeletonScene::createSkeletonMap() {
     skeletonMap.push_back(createImageReference("JointType_HipLeft", "JointType_KneeLeft", lThigh));
 }
 
-pair<pair<string, string>, ofImage> skeletonScene::createImageReference(string start, string end, ofImage image) {
+pair<pair<string, string>, SkeletonAsset> skeletonScene::createImageReference(string start, string end, SkeletonAsset image) {
     pair<string, string> limb = make_pair(start, end);
     return make_pair(limb, image);
 }
