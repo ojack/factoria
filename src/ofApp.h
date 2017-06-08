@@ -5,11 +5,9 @@
 #include "ofxKinect.h"
 
 #include "ofxGui.h"
-#include "ofxSyphon.h"
 #include "ofxMidi.h"
 #include "ofxKinectV2OSC.h"
 #include "ofxXmlSettings.h"
-#include "ofxBlur.h"
 #include "kinectInputV1.h"
 #include "sceneManager.h"
 
